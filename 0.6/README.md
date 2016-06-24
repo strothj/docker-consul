@@ -23,6 +23,13 @@ From the Consul image README:
 Vault manages secrets. This container should be used for experimentation only
 due to the importance of the data it manages. I am not a security expert.
 
+## mlock
+Vault disables swapping of its memory. To do this, it needs to be able to execute
+the `mlock` syscall. To grant the docker container this privilege, use the
+`--cap-add=IPC_LOCK` argument with `docker run`.  
+The Vault [Server Configuration](https://www.vaultproject.io/docs/config/) page
+contains the details.
+
 ## Usage
 ---
 Pull the docker image:
